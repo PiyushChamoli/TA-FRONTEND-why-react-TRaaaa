@@ -11,7 +11,7 @@ class TodoList {
     delete(id) {
         let index = this.todos.findIndex((todo) => todo.id === id)
         this.todos.splice(index,1)
-        
+        return this.todos.elgnth
     }
 }
 
