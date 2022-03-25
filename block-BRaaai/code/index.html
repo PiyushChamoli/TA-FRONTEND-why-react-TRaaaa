@@ -14,6 +14,21 @@
     <section id="root"></section>
     <script type="text/babel">
         
+        const monthNames = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+
         let cardInfo = {
             title: 'City Lights in New York',
             date: new Date('2017-01-26'),
@@ -29,7 +44,11 @@
         let card = <div className='card'>
                 <div className='card-img'>
                     <img src={cardInfo.imageURL} alt={cardInfo.title} />  
-                    <span>PHOTOS</span>  
+                    <span className='span1' >PHOTOS</span>
+                    <div className='date' >
+                        <span>{cardInfo.date.getDate()}</span>
+                        <span>{monthNames[cardInfo.date.getMonth()].slice(0, 3)}</span>    
+                    </div>  
                 </div>
                 <div className="card-text">
                     <h1>{cardInfo.title}</h1>
