@@ -99,11 +99,11 @@
                 // return li;
 
                 return (
-                    <li>
-                        <label for={i} >
+                    <li key={movie.name} >
+                        <label htmlFor={i} >
                             { movie.name }
                         </label>
-                        <button data-id={i} onClick={handleChange} >
+                        <button id={i} onClick={handleChange} >
                             { movie.watched ? "Watched" : "To Watch" }
                         </button>
                     </li>
