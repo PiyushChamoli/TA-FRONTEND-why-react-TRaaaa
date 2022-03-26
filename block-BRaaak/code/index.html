@@ -67,29 +67,31 @@
         },
         ];
 
-        let Article = (props) =>
+        function Article (props) {
+            return (
             <div className='card'>
                 <div className='card-img'>
-                    <img src={props.imageURL} alt={props.title} />  
-                    <span className='span1' >PHOTOS</span>
+                    <img src={props.articleInfo.imageURL} alt={props.articleInfo.title} />  
+                    <span className='span1' >{props.articleInfo.category}</span>
                     <div className='date' >
-                        <span>{props.date.getDate()}</span>
-                        <span>{monthNames[props.date.getMonth()].slice(0, 3)}</span>    
+                        <span>{props.articleInfo.date.getDate()}</span>
+                        <span>{monthNames[props.articleInfo.date.getMonth()].slice(0, 3)}</span>    
                     </div>  
                 </div>
                 <div className="card-text">
-                    <h1>{props.title}</h1>
-                    <h3>{props.subTitle}</h3>
-                    <p>{props.description}</p>    
+                    <h1>{props.articleInfo.title}</h1>
+                    <h3>{props.articleInfo.subTitle}</h3>
+                    <p>{props.articleInfo.description}</p>    
                 </div>
             </div>
+            )
+        }
 
-        let articles = 
-        <>
-        {data.map((card) => Article(card))}
-        </>
+        function Articles () {
+            return data.map((card) => <Article articleInfo={card} key={card.title} />)
+        }
 
-        ReactDOM.render(articles, document.getElementById('root'))
+        ReactDOM.render(< Articles />, document.getElementById('root'))
     </script>
 </body>
 </html>
