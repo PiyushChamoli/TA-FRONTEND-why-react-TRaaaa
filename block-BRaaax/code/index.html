@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Button</title>
+</head>
+<body>
+    <!-- Root Element -->
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+        let root = document.querySelector('#root')
+
+        let buttonSizes = {
+            "LARGE" : 'large',
+            "MEDIUM" : 'medium',
+            "SMALL" : 'small'
+        }
+
+        let buttonTypes = {
+            "PRIMARY" : 'primary',
+            "SECONDARY" : 'secondary',
+            "TERTIARY" : 'tertiary'
+        }
+
+        function Button(props) {
+            function getStyles() {
+                let { type= buttonTypes.PRIMARY ,size= buttonSizes.MEDIUM } = props
+                return `button--${type} button--${size}`   
+            }
+            return ( 
+            <button 
+                onClick={props.onClickHandler} 
+                className={getStyles()} 
+                disabled={props.disabled}>
+                    { props.label || 'Button' }
+            </button>
+            )
+        }
+
+        ReactDOM.render(
+            <>
+                <Button label='Click Me!' />
+                <Button label='Click Me!' type={buttonTypes.SECONDARY} size={buttonSizes.LARGE} />
+                <Button label='Click Me!' type={buttonTypes.PRIMARY} size={buttonSizes.MEDIUM} />
+                <Button label='Click Me!' onClickHandler={() => alert('You CLicked Me!')} />
+                <Button disabled />
+            </>,root)
+    </script>
+</body>
+</html>
